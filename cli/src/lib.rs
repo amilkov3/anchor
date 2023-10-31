@@ -1984,7 +1984,9 @@ fn idl_set_buffer(
             );
 
             // Send the transaction.
-            client.send_and_confirm_transaction_with_spinner(&tx)?;
+            if let Err( e) = client.send_and_confirm_transaction_with_spinner(&tx) {
+                println!("e ${:?}", e);
+            }
         }
 
         Ok(())
